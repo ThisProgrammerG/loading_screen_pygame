@@ -24,7 +24,7 @@ def get_center(width, height, other_width, other_height):
 
 def load_images(container, amount):
     start_time = time.time()
-    for i in range(amount):
+    for _ in range(amount):
         image = pygame.Surface((700, 850))
         image.fill(random.sample(range(256), 3))
         container.put(image)
