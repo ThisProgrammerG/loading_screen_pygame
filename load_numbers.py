@@ -2,10 +2,11 @@
 
 import itertools
 import threading
-from collections import deque
 import time
+from collections import deque
 
 import pygame
+
 
 pygame.init()
 
@@ -33,7 +34,7 @@ def main():
     counter_text = font.render('0', True, 'orange')
     loading_message = next(loading_messages)
 
-    your_data = iter(range(50_000_000)) 
+    your_data = iter(range(50_000_000))
 
     counter_deque = deque()
 
@@ -62,7 +63,6 @@ def main():
             image_index += 1
         else:
             screen.blit(done_message, (WIDTH // 2 - WIDTH_OFFSET, HEIGHT // 2))
-
 
         pygame.display.flip()
 

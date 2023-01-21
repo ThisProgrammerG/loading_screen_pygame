@@ -1,12 +1,13 @@
 # Python 3.11
 
 import itertools
-import threading
-from queue import Queue
-import time
 import random
+import threading
+import time
+from queue import Queue
 
 import pygame
+
 
 pygame.init()
 
