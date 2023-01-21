@@ -26,11 +26,15 @@ def get_center(width, height, other_width, other_height):
 
 def load_images(container, image_paths):
     start_time = time.time()
-    for image_path in iglob(rf'{image_paths}\*poster*.jpg'):
-        image = pygame.image.load(image_path)
-        image = pygame.transform.smoothscale(image, size=(700, 850))
-        container.append(image)
-
+    try:
+        results = iglob(rf'{image_paths}\*poster*.jpg')  # iglob, less memory usage
+        while True:
+            image_path = next(results)
+            image = pygame.image.load(image_path)
+            image = pygame.transform.smoothscale(image, size=(700, 850))
+            container.append(image)
+    except StopIteration:
+        pass
     print(f'Thread finished: {time.time() - start_time:.2f} seconds.')
 
 def main(image_paths):
