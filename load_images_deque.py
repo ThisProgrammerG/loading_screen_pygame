@@ -94,7 +94,7 @@ def make_images(image_paths, total_images=10):
 
 if __name__ == '__main__':
     IMAGE_PATHS = os.path.join(os.path.dirname(__file__), 'images')
-    make_images(IMAGE_PATHS)
+    #make_images(IMAGE_PATHS)
     main(IMAGE_PATHS)
 
 
