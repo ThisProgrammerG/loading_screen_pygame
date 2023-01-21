@@ -13,7 +13,7 @@ pygame.init()
 SIZE = WIDTH, HEIGHT = 1500, 950
 FONT_SIZE = 24
 WIDTH_OFFSET = 50
-TOTAL_IMAGES = 10
+TOTAL_IMAGES = 100
 IMAGE_TIMER = pygame.event.custom_type()
 
 def get_center(width, height, other_width, other_height):
@@ -25,7 +25,8 @@ def get_center(width, height, other_width, other_height):
 def load_images(container, amount):
     start_time = time.time()
     for _ in range(amount):
-        image = pygame.Surface((700, 850))
+        image = pygame.Surface((100, 150))
+        image = pygame.transform.smoothscale(image, size=(700, 850))
         image.fill(random.sample(range(256), 3))
         container.put(image)
 
@@ -46,7 +47,7 @@ def main():
     loading_message = next(loading_messages)
 
     # Only hold max 3 images(or however many that makes sense) to save on memory usage
-    image_queue = Queue(maxsize=3)
+    image_queue = Queue()  # set maxsize for better memory usage
 
     # Daemon threads will shut down with the main thread.
     loading_thread = threading.Thread(
@@ -81,4 +82,5 @@ def main():
     pygame.quit()
 
 if __name__ == '__main__':
+
     main()
